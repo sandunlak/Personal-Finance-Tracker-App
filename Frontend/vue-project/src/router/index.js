@@ -6,6 +6,8 @@ import DashboardView from '../views/DashboardView.vue'
 import AdminPanelView from '../views/AdminPanelView.vue'
 import AddAccount from '../views/AddAccount.vue'
 import AddBudgetView from '../views/AddBudget.vue'
+import AddTransaction from '../views/AddTransaction.vue'
+import AddGoal from '../views/AddGoal.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -14,7 +16,9 @@ const routes = [
   { path: '/dashboard', name: 'dashboard', component: DashboardView, meta: { requiresAuth: true } },
   { path: '/admin', name: 'admin', component: AdminPanelView, meta: { requiresAuth: true, requiresAdmin: true } },
   { path: '/add-account', name: 'addAccoumnt', component: AddAccount, meta: { requiresAuth: true } },
-  { path: '/add-budget', name: 'add-budget', component: AddBudgetView, meta: { requiresAuth: true } }
+  { path: '/add-budget', name: 'add-budget', component: AddBudgetView, meta: { requiresAuth: true } },
+  { path: '/add-transaction', name: 'add-transaction', component: AddTransaction, meta: { requiresAuth: true } },
+  { path: '/add-goal', name:'add-goal',component:AddGoal,meta:{requiresAuth:true}}
 ]
 
 const router = createRouter({
