@@ -63,9 +63,16 @@
           </svg>
           Add Goal
         </button>
+        <button @click="$router.push('/reports')" class="quick-action-btn reports-btn">
+          <svg class="action-icon" viewBox="0 0 24 24">
+            <path d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M7,20H9V14H7V20M11,20H13V12H11V20M15,20H17V16H15V20Z" />
+          </svg>
+          Reports
+        </button>
       </div>
     </div>
 
+    <!-- Rest of the template remains the same -->
     <!-- Update Profile Form -->
     <transition name="slide-fade">
       <div v-if="showUpdateForm" class="update-form-card card">
@@ -233,6 +240,13 @@ export default {
 </script>
 
 <style>
+/* Add this new style for the reports button hover effect */
+.reports-btn:hover {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+}
+
+/* Rest of the styles remain the same */
 :root {
   --primary-color: #4f46e5;
   --primary-hover: #4338ca;
@@ -263,22 +277,22 @@ body {
 }
 
 .dashboard-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem;
 }
 
 .dashboard-header {
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   text-align: center;
   position: relative;
 }
 
 .dashboard-header h2 {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--primary-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   position: relative;
   display: inline-block;
 }
@@ -286,33 +300,33 @@ body {
 .dashboard-header h2::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
+  width: 100px;
+  height: 5px;
   background: linear-gradient(90deg, var(--primary-color), var(--info-color));
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .header-divider {
-  height: 1px;
+  height: 2px;
   background: linear-gradient(90deg, transparent, var(--border-color), transparent);
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 }
 
 .card {
   background-color: var(--card-bg);
-  border-radius: 1rem;
-  box-shadow: 0 10px 15px -3px var(--shadow-color);
-  padding: 2rem;
-  margin-bottom: 2rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 15px 25px -5px var(--shadow-color);
+  padding: 2.5rem;
+  margin-bottom: 3rem;
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-7px);
+  box-shadow: 0 25px 35px -10px rgba(0, 0, 0, 0.15);
 }
 
 .profile-card {
@@ -326,7 +340,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 8px;
+  height: 10px;
   background: linear-gradient(90deg, var(--primary-color), var(--info-color));
 }
 
@@ -334,35 +348,36 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .profile-header h3 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
   color: var(--text-color);
 }
 
 .profile-actions {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .action-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.75rem;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.85rem;
   font-weight: 500;
+  font-size: 1.05rem;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
   border: none;
 }
 
 .btn-icon {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
   fill: currentColor;
 }
 
@@ -373,7 +388,7 @@ body {
 
 .update-btn:hover {
   background-color: var(--primary-hover);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .delete-btn {
@@ -383,53 +398,53 @@ body {
 
 .delete-btn:hover {
   background-color: #dc2626;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .profile-details {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 .detail-item {
   background-color: var(--bg-color);
-  padding: 1.25rem;
-  border-radius: 0.75rem;
+  padding: 1.75rem;
+  border-radius: 1rem;
   transition: transform var(--transition-speed) ease;
 }
 
 .detail-item:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
 }
 
 .detail-label {
   display: block;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--text-light);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .detail-value {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 500;
 }
 
 .role-badge {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
+  padding: 0.35rem 1rem;
   border-radius: 9999px;
   background-color: var(--primary-color);
   color: white;
-  font-size: 0.875rem;
+  font-size: 1rem;
   text-transform: capitalize;
 }
 
 .quick-actions {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
 
 .quick-action-btn {
@@ -437,25 +452,26 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 1rem;
-  border-radius: 0.75rem;
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
   background-color: var(--bg-color);
   color: var(--text-color);
   font-weight: 500;
+  font-size: 1.1rem;
   transition: all var(--transition-speed) ease;
   border: none;
   cursor: pointer;
 }
 
 .quick-action-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-7px);
+  box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 .action-icon {
-  width: 2rem;
-  height: 2rem;
-  margin-bottom: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1rem;
   fill: currentColor;
 }
 
@@ -503,11 +519,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .form-header h3 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
   color: var(--text-color);
 }
@@ -516,7 +532,7 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: 50%;
   transition: background-color var(--transition-speed) ease;
 }
@@ -526,14 +542,14 @@ body {
 }
 
 .close-btn svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   fill: var(--text-light);
 }
 
 .profile-form {
   display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .form-group {
@@ -542,18 +558,18 @@ body {
 
 .form-group label {
   display: block;
-  font-size: 0.875rem;
+  font-size: 1.1rem;
   font-weight: 500;
   color: var(--text-light);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .form-input {
   width: 100%;
-  padding: 1rem;
-  font-size: 1rem;
+  padding: 1.25rem;
+  font-size: 1.1rem;
   border: 1px solid var(--border-color);
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   background-color: var(--bg-color);
   transition: all var(--transition-speed) ease;
 }
@@ -561,7 +577,7 @@ body {
 .form-input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
 }
 
 .form-actions {
@@ -572,39 +588,40 @@ body {
 .submit-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 1.5rem;
+  gap: 0.75rem;
+  padding: 1.25rem 2rem;
   background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   font-weight: 500;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
 }
 
 .submit-btn:hover {
   background-color: var(--primary-hover);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .submit-icon {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
   fill: currentColor;
 }
 
 /* Accounts Section */
 .accounts-section {
-  margin-top: 3rem;
+  margin-top: 4rem;
 }
 
 .section-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .section-header h3 {
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 600;
   color: var(--text-color);
   position: relative;
@@ -614,74 +631,75 @@ body {
 .section-header h3::after {
   content: '';
   position: absolute;
-  bottom: -8px;
+  bottom: -10px;
   left: 0;
-  width: 60px;
-  height: 3px;
+  width: 80px;
+  height: 4px;
   background: linear-gradient(90deg, var(--primary-color), var(--info-color));
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .empty-state {
   text-align: center;
-  padding: 3rem 2rem;
+  padding: 4rem 3rem;
   background-color: var(--bg-color);
-  border-radius: 1rem;
+  border-radius: 1.25rem;
   border: 2px dashed var(--border-color);
 }
 
 .empty-icon {
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   fill: var(--text-light);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   opacity: 0.7;
 }
 
 .empty-state p {
   color: var(--text-light);
-  margin-bottom: 1.5rem;
-  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
 }
 
 .add-account-btn {
-  padding: 1rem 1.5rem;
+  padding: 1.25rem 2rem;
   background-color: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   font-weight: 500;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
 }
 
 .add-account-btn:hover {
   background-color: var(--primary-hover);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .accounts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
 }
 
 .account-card {
   background-color: var(--card-bg);
-  border-radius: 1rem;
+  border-radius: 1.25rem;
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transition: all var(--transition-speed) ease;
   border: 1px solid var(--border-color);
 }
 
 .account-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-7px);
+  box-shadow: 0 25px 35px -10px rgba(0, 0, 0, 0.15);
 }
 
 .account-header {
-  padding: 1.5rem;
+  padding: 2rem;
   background-color: var(--bg-color);
   border-bottom: 1px solid var(--border-color);
   display: flex;
@@ -690,15 +708,15 @@ body {
 }
 
 .account-header h4 {
-  font-size: 1.125rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--text-color);
 }
 
 .account-type {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 500;
-  padding: 0.25rem 0.75rem;
+  padding: 0.35rem 1rem;
   border-radius: 9999px;
   background-color: var(--primary-color);
   color: white;
@@ -706,13 +724,13 @@ body {
 }
 
 .account-details {
-  padding: 1.5rem;
+  padding: 2rem;
 }
 
 .detail-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .detail-row:last-child {
@@ -720,12 +738,12 @@ body {
 }
 
 .detail-label {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--text-light);
 }
 
 .detail-value {
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--text-color);
 }
@@ -733,12 +751,13 @@ body {
 .detail-value.amount {
   font-weight: 600;
   color: var(--success-color);
+  font-size: 1.1rem;
 }
 
 .account-actions {
   display: flex;
   border-top: 1px solid var(--border-color);
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .account-actions button {
@@ -746,17 +765,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem;
+  gap: 0.75rem;
+  padding: 1rem;
   background: none;
   border: none;
   cursor: pointer;
+  font-size: 1.05rem;
   transition: all var(--transition-speed) ease;
 }
 
 .account-actions button svg {
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   fill: currentColor;
 }
 
@@ -780,14 +800,29 @@ body {
   background-color: rgba(245, 158, 11, 0.1);
 }
 
+@media (max-width: 1024px) {
+  .dashboard-container {
+    padding: 2.5rem;
+  }
+  
+  .quick-actions {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .accounts-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .dashboard-container {
-    padding: 1.5rem;
+    padding: 2rem;
   }
   
   .profile-actions {
     flex-direction: column;
     width: 100%;
+    gap: 1rem;
   }
   
   .action-btn {
@@ -802,9 +837,21 @@ body {
   .accounts-grid {
     grid-template-columns: 1fr;
   }
+  
+  .dashboard-header h2 {
+    font-size: 2.25rem;
+  }
+  
+  .section-header h3 {
+    font-size: 1.75rem;
+  }
 }
 
 @media (max-width: 480px) {
+  .dashboard-container {
+    padding: 1.5rem;
+  }
+  
   .quick-actions {
     grid-template-columns: 1fr;
   }
@@ -814,11 +861,15 @@ body {
   }
   
   .dashboard-header h2 {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
   
   .section-header h3 {
     font-size: 1.5rem;
+  }
+  
+  .card {
+    padding: 2rem 1.5rem;
   }
 }
 </style>

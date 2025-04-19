@@ -1,14 +1,18 @@
 <template>
-  <div class="container mx-auto p-4">
-    <h2 class="text-2xl font-bold mb-4">{{ isEditing ? 'Edit Budget' : 'Add New Budget' }}</h2>
-    <div class="bg-white shadow-md rounded p-4 mb-6">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+    <h2 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: #1a365d;">
+      {{ isEditing ? 'Edit Budget' : 'Add New Budget' }}
+    </h2>
+    
+    <div style="background: white; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); padding: 1.5rem; margin-bottom: 2rem;">
       <form @submit.prevent="isEditing ? updateBudget() : addBudget()">
-        <div class="mb-4">
-          <label class="block text-sm font-medium">Account</label>
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4a5568; margin-bottom: 0.5rem;">Account</label>
           <select
             v-model="budget.accountId"
             required
-            class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+            style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; background-color: #f8fafc; transition: all 0.2s; outline: none;"
+            :style="{ 'border-color': budget.accountId ? '#3182ce' : '#e2e8f0', 'box-shadow': budget.accountId ? '0 0 0 2px rgba(49, 130, 206, 0.2)' : 'none' }"
           >
             <option value="" disabled>Select an account</option>
             <option v-for="acc in accounts" :key="acc._id" :value="acc._id">
@@ -16,22 +20,26 @@
             </option>
           </select>
         </div>
-        <div class="mb-4">
-          <label class="block text-sm font-medium">Budget Name</label>
+        
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4a5568; margin-bottom: 0.5rem;">Budget Name</label>
           <input
             v-model="budget.name"
             type="text"
             required
-            class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+            style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; background-color: #f8fafc; transition: all 0.2s; outline: none;"
+            :style="{ 'border-color': budget.name ? '#3182ce' : '#e2e8f0', 'box-shadow': budget.name ? '0 0 0 2px rgba(49, 130, 206, 0.2)' : 'none' }"
             placeholder="Enter budget name"
           />
         </div>
-        <div class="mb-4">
-          <label class="block text-sm font-medium">Category</label>
+        
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4a5568; margin-bottom: 0.5rem;">Category</label>
           <select
             v-model="budget.categories"
             required
-            class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+            style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; background-color: #f8fafc; transition: all 0.2s; outline: none;"
+            :style="{ 'border-color': budget.categories ? '#3182ce' : '#e2e8f0', 'box-shadow': budget.categories ? '0 0 0 2px rgba(49, 130, 206, 0.2)' : 'none' }"
           >
             <option value="" disabled>Select category</option>
             <option value="vehicle">Vehicle</option>
@@ -39,35 +47,41 @@
             <option value="transport">Transport</option>
           </select>
         </div>
-        <div class="mb-4">
-          <label class="block text-sm font-medium">Amount</label>
+        
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4a5568; margin-bottom: 0.5rem;">Amount</label>
           <input
             v-model="budget.amount"
             type="number"
             step="0.01"
             required
-            class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+            style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; background-color: #f8fafc; transition: all 0.2s; outline: none;"
+            :style="{ 'border-color': budget.amount ? '#3182ce' : '#e2e8f0', 'box-shadow': budget.amount ? '0 0 0 2px rgba(49, 130, 206, 0.2)' : 'none' }"
             placeholder="Enter budget amount"
           />
         </div>
-        <div class="mb-4">
-          <label class="block text-sm font-medium">Currency</label>
+        
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4a5568; margin-bottom: 0.5rem;">Currency</label>
           <select
             v-model="budget.currency"
             required
-            class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+            style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; background-color: #f8fafc; transition: all 0.2s; outline: none;"
+            :style="{ 'border-color': budget.currency ? '#3182ce' : '#e2e8f0', 'box-shadow': budget.currency ? '0 0 0 2px rgba(49, 130, 206, 0.2)' : 'none' }"
           >
             <option value="" disabled>Select currency</option>
             <option value="lkr">LKR</option>
             <option value="usd">USD</option>
           </select>
         </div>
-        <div class="mb-4">
-          <label class="block text-sm font-medium">Period</label>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4a5568; margin-bottom: 0.5rem;">Period</label>
           <select
             v-model="budget.period"
             required
-            class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500"
+            style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem; background-color: #f8fafc; transition: all 0.2s; outline: none;"
+            :style="{ 'border-color': budget.period ? '#3182ce' : '#e2e8f0', 'box-shadow': budget.period ? '0 0 0 2px rgba(49, 130, 206, 0.2)' : 'none' }"
           >
             <option value="" disabled>Select period</option>
             <option value="week">Week</option>
@@ -76,16 +90,20 @@
             <option value="onetime">One-time</option>
           </select>
         </div>
-        <div class="flex space-x-2">
+        
+        <div style="display: flex; gap: 0.5rem;">
           <button
             type="submit"
-            class="bg-green-500 text-white p-2 rounded hover:bg-green-600"
+            style="background-color: #38a169; color: white; padding: 0.5rem 1rem; border-radius: 0.375rem; font-weight: 500; transition: all 0.2s; border: none; cursor: pointer;"
+            :style="{ 'background-color': isEditing ? '#3182ce' : '#38a169', '&:hover': { backgroundColor: isEditing ? '#2c5282' : '#2f855a' } }"
           >
             {{ isEditing ? 'Update Budget' : 'Add Budget' }}
           </button>
           <button
             @click="$router.push('/dashboard')"
-            class="bg-gray-500 text-white p-2 rounded hover:bg-gray-600"
+            type="button"
+            style="background-color: #718096; color: white; padding: 0.5rem 1rem; border-radius: 0.375rem; font-weight: 500; transition: all 0.2s; border: none; cursor: pointer;"
+            :hover="{ backgroundColor: '#4a5568' }"
           >
             Cancel
           </button>
@@ -94,54 +112,64 @@
     </div>
 
     <!-- Display All Budgets -->
-    <div class="bg-white shadow-md rounded p-4">
-      <h3 class="text-xl font-semibold mb-4">Your Budgets</h3>
-      <div v-if="loading" class="text-gray-500 text-center">
+    <div style="background: white; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); padding: 1.5rem;">
+      <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: #1a365d;">Your Budgets</h3>
+      
+      <div v-if="loading" style="color: #718096; text-align: center; padding: 1rem;">
         Loading budgets...
       </div>
-      <div v-else-if="budgets.length > 0" class="space-y-4">
+      
+      <div v-else-if="budgets.length > 0" style="display: grid; gap: 1rem;">
         <div
           v-for="budget in budgets"
           :key="budget._id"
-          class="border p-4 rounded flex justify-between items-center bg-gray-50 hover:bg-gray-100"
+          style="border: 1px solid #e2e8f0; padding: 1rem; border-radius: 0.375rem; display: flex; justify-content: space-between; align-items: center; background-color: #f8fafc; transition: all 0.2s;"
+          :hover="{ backgroundColor: '#edf2f7' }"
         >
           <div>
-            <p><strong>Name:</strong> {{ budget.name }}</p>
-            <p><strong>Account:</strong> {{ getAccountName(budget.account) }}</p>
-            <p><strong>Category:</strong> {{ budget.categories }}</p>
-            <p><strong>Amount:</strong> {{ budget.currency }} {{ budget.amount.toFixed(2) }}</p>
-            <p><strong>Period:</strong> {{ budget.period }}</p>
+            <p style="margin-bottom: 0.5rem;"><strong style="color: #4a5568;">Name:</strong> <span style="color: #2d3748;">{{ budget.name }}</span></p>
+            <p style="margin-bottom: 0.5rem;"><strong style="color: #4a5568;">Account:</strong> <span style="color: #2d3748;">{{ getAccountName(budget.account) }}</span></p>
+            <p style="margin-bottom: 0.5rem;"><strong style="color: #4a5568;">Category:</strong> <span style="color: #2d3748;">{{ budget.categories }}</span></p>
+            <p style="margin-bottom: 0.5rem;"><strong style="color: #4a5568;">Amount:</strong> <span style="color: #2d3748;">{{ budget.currency }} {{ budget.amount.toFixed(2) }}</span></p>
+            <p style="margin-bottom: 0;"><strong style="color: #4a5568;">Period:</strong> <span style="color: #2d3748;">{{ budget.period }}</span></p>
           </div>
-          <div class="flex space-x-2">
+          
+          <div style="display: flex; gap: 0.5rem;">
             <button
               @click="editBudget(budget)"
-              class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+              style="background-color: #3182ce; color: white; padding: 0.5rem 1rem; border-radius: 0.375rem; font-weight: 500; transition: all 0.2s; border: none; cursor: pointer;"
+              :hover="{ backgroundColor: '#2b6cb0' }"
             >
               Edit
             </button>
             <button
               @click="deleteBudget(budget._id)"
-              class="bg-red-500 text-white p-2 rounded hover:bg-red-600"
+              style="background-color: #e53e3e; color: white; padding: 0.5rem 1rem; border-radius: 0.375rem; font-weight: 500; transition: all 0.2s; border: none; cursor: pointer;"
+              :hover="{ backgroundColor: '#c53030' }"
             >
               Delete
             </button>
           </div>
         </div>
       </div>
-      <p v-else class="text-gray-500">No budgets found.</p>
+      
+      <p v-else style="color: #718096; padding: 1rem; text-align: center;">
+        No budgets found.
+      </p>
     </div>
 
     <!-- Overspent Popup -->
     <div
       v-if="showOverspentPopup"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+      style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; z-index: 50;"
     >
-      <div class="bg-white p-6 rounded shadow-lg">
-        <h3 class="text-lg font-bold mb-4">Budget Overspent</h3>
-        <p class="mb-4">Budget is overspent! Please adjust the account balance.</p>
+      <div style="background: white; padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); max-width: 400px; width: 100%;">
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 1rem; color: #1a365d;">Budget Overspent</h3>
+        <p style="margin-bottom: 1.5rem; color: #4a5568;">Budget is overspent! Please adjust the account balance.</p>
         <button
           @click="showOverspentPopup = false"
-          class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+          style="background-color: #3182ce; color: white; padding: 0.5rem 1rem; border-radius: 0.375rem; font-weight: 500; transition: all 0.2s; border: none; cursor: pointer; width: 100%;"
+          :hover="{ backgroundColor: '#2b6cb0' }"
         >
           OK
         </button>

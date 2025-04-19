@@ -8,6 +8,7 @@ import AddAccount from '../views/AddAccount.vue'
 import AddBudgetView from '../views/AddBudget.vue'
 import AddTransaction from '../views/AddTransaction.vue'
 import AddGoal from '../views/AddGoal.vue'
+import ReportsView from '../views/ReportsView.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -18,7 +19,8 @@ const routes = [
   { path: '/add-account', name: 'addAccoumnt', component: AddAccount, meta: { requiresAuth: true } },
   { path: '/add-budget', name: 'add-budget', component: AddBudgetView, meta: { requiresAuth: true } },
   { path: '/add-transaction', name: 'add-transaction', component: AddTransaction, meta: { requiresAuth: true } },
-  { path: '/add-goal', name:'add-goal',component:AddGoal,meta:{requiresAuth:true}}
+  { path: '/add-goal', name:'add-goal',component:AddGoal,meta:{requiresAuth:true}},
+  { path: '/reports',name: 'reports' ,component:ReportsView,meta:{requiresAuth:true}}
 ]
 
 const router = createRouter({

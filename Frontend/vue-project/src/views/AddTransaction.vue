@@ -1,25 +1,25 @@
 <template>
-  <div class="container mx-auto p-4">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 2rem; font-family: 'Inter', sans-serif; background-color: #f5f7fa;">
     <!-- Add Transaction Form -->
-    <h2 class="text-2xl font-bold mb-4">Add Transaction</h2>
-    <div class="bg-white shadow-md rounded p-4 mb-6">
+    <h2 style="font-size: 2.5rem; font-weight: 700; color: #1a202c; margin-bottom: 2rem;">Add Transaction</h2>
+    <div style="background-color: #ffffff; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); margin-bottom: 2rem;">
       <form @submit.prevent="addTransaction">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Amount</label>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+          <div>
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Amount</label>
             <input 
               v-model.number="form.value" 
               type="number" 
               step="0.01" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: all 0.2s; outline: none;"
               required 
             />
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Type</label>
+          <div>
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Type</label>
             <select 
               v-model="form.transtype" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; background-color: #fff; transition: all 0.2s; outline: none;"
               required
             >
               <option value="" disabled>Select Type</option>
@@ -27,11 +27,11 @@
               <option value="expense">Expense</option>
             </select>
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Category</label>
+          <div>
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Category</label>
             <select 
               v-model="form.category" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; background-color: #fff; transition: all 0.2s; outline: none;"
               required
             >
               <option value="" disabled>Select Category</option>
@@ -41,11 +41,11 @@
               <option value="others">Others</option>
             </select>
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Account</label>
+          <div>
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Account</label>
             <select 
               v-model="form.accountId" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; background-color: #fff; transition: all 0.2s; outline: none;"
               required
             >
               <option value="" disabled>Select Account</option>
@@ -55,40 +55,41 @@
               </option>
             </select>
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Description</label>
+          <div>
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Description</label>
             <input 
               v-model="form.description" 
               type="text" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: all 0.2s; outline: none;"
               required 
             />
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Tags (Ctrl+Click to select multiple)</label>
+          <div>
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Tags (Ctrl+Click to select multiple)</label>
             <select 
               v-model="form.tags" 
               multiple
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 h-24"
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; background-color: #fff; height: 8rem; transition: all 0.2s; outline: none;"
             >
               <option v-for="tag in availableTags" :key="tag" :value="tag">
                 {{ tag }}
               </option>
             </select>
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Date</label>
+          <div>
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Date</label>
             <input 
               v-model="form.date" 
-              type="date"Armor class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              type="date" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: all 0.2s; outline: none;"
               required 
             />
           </div>
         </div>
-        <div class="flex space-x-2">
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
           <button 
             type="submit" 
-            class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+            style="background-color: #3b82f6; color: #fff; padding: 0.75rem 1.5rem; font-size: 1.1rem; border-radius: 0.5rem; transition: background-color 0.2s; outline: none;"
             :disabled="!form.accountId || accounts.length === 0"
           >
             Add Transaction
@@ -96,7 +97,7 @@
           <button 
             type="button" 
             @click="resetForm" 
-            class="bg-gray-500 text-white p-2 rounded hover:bg-gray-600"
+            style="background-color: #6b7280; color: #fff; padding: 0.75rem 1.5rem; font-size: 1.1rem; border-radius: 0.5rem; transition: background-color 0.2s; outline: none;"
           >
             Clear
           </button>
@@ -105,47 +106,47 @@
     </div>
 
     <!-- Filter Transactions -->
-    <h2 class="text-2xl font-bold mb-4">Filter Transactions</h2>
-    <div class="bg-white shadow-md rounded p-4 mb-6">
+    <h2 style="font-size: 2.5rem; font-weight: 700; color: #1a202c; margin-bottom: 2rem;">Filter Transactions</h2>
+    <div style="background-color: #ffffff; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); margin-bottom: 2rem;">
       <form @submit.prevent="filterTransactions">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Tags (comma-separated)</label>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+          <div>
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Tags (comma-separated)</label>
             <input 
               v-model="filterForm.tags" 
               type="text" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: all 0.2s; outline: none;"
               placeholder="e.g., groceries, urgent"
             />
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Start Date</label>
+          <div>
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Start Date</label>
             <input 
               v-model="filterForm.startDate" 
               type="date" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: all 0.2s; outline: none;"
             />
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">End Date</label>
+          <div>
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">End Date</label>
             <input 
               v-model="filterForm.endDate" 
               type="date" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: all 0.2s; outline: none;"
             />
           </div>
         </div>
-        <div class="flex space-x-2">
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
           <button 
             type="submit" 
-            class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+            style="background-color: #3b82f6; color: #fff; padding: 0.75rem 1.5rem; font-size: 1.1rem; border-radius: 0.5rem; transition: background-color 0.2s; outline: none;"
           >
             Filter
           </button>
           <button 
             type="button" 
             @click="resetFilter" 
-            class="bg-gray-500 text-white p-2 rounded hover:bg-gray-600"
+            style="background-color: #6b7280; color: #fff; padding: 0.75rem 1.5rem; font-size: 1.1rem; border-radius: 0.5rem; transition: background-color 0.2s; outline: none;"
           >
             Clear Filter
           </button>
@@ -154,18 +155,18 @@
     </div>
 
     <!-- Transactions List -->
-    <h2 class="text-2xl font-bold mb-4">Transactions</h2>
-    <div class="bg-white shadow-md rounded p-4">
-      <div v-if="transactions.length === 0" class="text-center text-gray-500">
+    <h2 style="font-size: 2.5rem; font-weight: 700; color: #1a202c; margin-bottom: 2rem;">Transactions</h2>
+    <div style="background-color: #ffffff; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);">
+      <div v-if="transactions.length === 0" style="text-align: center; color: #6b7280; font-size: 1.25rem;">
         No transactions found
       </div>
-      <div v-else class="space-y-4">
+      <div v-else style="display: flex; flex-direction: column; gap: 1.5rem;">
         <div 
           v-for="transaction in transactions" 
           :key="transaction._id" 
-          class="border p-4 rounded flex justify-between items-center"
+          style="border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 0.75rem; display: flex; justify-content: space-between; align-items: center; background-color: #fafafa;"
         >
-          <div>
+          <div style="font-size: 1.1rem; color: #2d3748;">
             <p><strong>Amount:</strong> {{ transaction.value }}</p>
             <p><strong>Type:</strong> {{ transaction.transtype }}</p>
             <p><strong>Category:</strong> {{ transaction.category }}</p>
@@ -174,16 +175,16 @@
             <p><strong>Tags:</strong> {{ transaction.tags.join(', ') }}</p>
             <p><strong>Date:</strong> {{ formatDate(transaction.date) }}</p>
           </div>
-          <div class="space-x-2">
+          <div style="display: flex; gap: 1rem;">
             <button 
               @click="editTransaction(transaction)" 
-              class="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600"
+              style="background-color: #f59e0b; color: #fff; padding: 0.75rem 1.5rem; font-size: 1.1rem; border-radius: 0.5rem; transition: background-color 0.2s; outline: none;"
             >
               Edit
             </button>
             <button 
               @click="deleteTransaction(transaction._id)" 
-              class="bg-red-500 text-white p-2 rounded hover:bg-red-600"
+              style="background-color: #ef4444; color: #fff; padding: 0.75rem 1.5rem; font-size: 1.1rem; border-radius: 0.5rem; transition: background-color 0.2s; outline: none;"
             >
               Delete
             </button>
@@ -193,36 +194,36 @@
     </div>
 
     <!-- Update Transaction Modal -->
-    <div v-if="showUpdateForm" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div class="bg-white rounded p-6 w-full max-w-md">
-        <h3 class="text-xl font-semibold mb-4">_Update Transaction</h3>
+    <div v-if="showUpdateForm" style="position: fixed; inset: 0; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center;">
+      <div style="background-color: #ffffff; border-radius: 1rem; padding: 2rem; width: 100%; max-width: 600px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
+        <h3 style="font-size: 1.75rem; font-weight: 600; color: #1a202c; margin-bottom: 1.5rem;">Update Transaction</h3>
         <form @submit.prevent="updateTransaction">
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Amount</label>
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Amount</label>
             <input 
               v-model.number="updateForm.value" 
               type="number" 
               step="0.01" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: all 0.2s; outline: none;"
               required 
             />
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Type</label>
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Type</label>
             <select 
               v-model="updateForm.transtype" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; background-color: #fff; transition: all 0.2s; outline: none;"
               required
             >
               <option value="income">Income</option>
               <option value="expense">Expense</option>
             </select>
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Category</label>
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Category</label>
             <select 
               v-model="updateForm.category" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; background-color: #fff; transition: all 0.2s; outline: none;"
               required
             >
               <option value="food">Food</option>
@@ -231,11 +232,11 @@
               <option value="others">Others</option>
             </select>
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Account</label>
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Account</label>
             <select 
               v-model="updateForm.accountId" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; background-color: #fff; transition: all 0.2s; outline: none;"
               required
             >
               <option value="" disabled>Select Account</option>
@@ -245,40 +246,40 @@
               </option>
             </select>
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Description</label>
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Description</label>
             <input 
               v-model="updateForm.description" 
               type="text" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: all 0.2s; outline: none;"
               required 
             />
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Tags (Ctrl+Click to select multiple)</label>
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Tags (Ctrl+Click to select multiple)</label>
             <select 
               v-model="updateForm.tags" 
               multiple
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500 h-24"
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; background-color: #fff; height: 8rem; transition: all 0.2s; outline: none;"
             >
               <option v-for="tag in availableTags" :key="tag" :value="tag">
                 {{ tag }}
               </option>
             </select>
           </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium">Date</label>
+          <div style="margin-bottom: 1rem;">
+            <label style="display: block; font-size: 1.25rem; font-weight: 500; color: #2d3748; margin-bottom: 0.5rem;">Date</label>
             <input 
               v-model="updateForm.date" 
               type="date" 
-              class="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" 
+              style="width: 100%; padding: 0.75rem; font-size: 1.1rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; transition: all 0.2s; outline: none;"
               required 
             />
           </div>
-          <div class="flex space-x-2">
+          <div style="display: flex; gap: 1rem;">
             <button 
               type="submit" 
-              class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+              style="background-color: #3b82f6; color: #fff; padding: 0.75rem 1.5rem; font-size: 1.1rem; border-radius: 0.5rem; transition: background-color 0.2s; outline: none;"
               :disabled="!updateForm.accountId || accounts.length === 0"
             >
               Update
@@ -286,7 +287,7 @@
             <button 
               type="button" 
               @click="showUpdateForm = false" 
-              class="bg-gray-500 text-white p-2 rounded hover:bg-gray-600"
+              style="background-color: #6b7280; color: #fff; padding: 0.75rem 1.5rem; font-size: 1.1rem; border-radius: 0.5rem; transition: background-color 0.2s; outline: none;"
             >
               Cancel
             </button>

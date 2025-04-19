@@ -35,59 +35,54 @@ export default {
 </script>
 
 <style>
-:root {
-  --primary-color: #2563eb;
-  --primary-hover: #1d4ed8;
-  --text-light: #ffffff;
-  --text-dark: #1e293b;
-  --transition-speed: 0.3s;
-}
-
 .navbar {
-  background-color: var(--primary-color);
-  color: var(--text-light);
-  padding: 1rem 0;
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: #ffffff;
+  padding: 1.2rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .navbar-brand {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   text-decoration: none;
-  color: var(--text-light);
-  transition: opacity var(--transition-speed) ease;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .navbar-brand:hover {
-  opacity: 0.9;
+  opacity: 0.85;
+  transform: scale(1.05);
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .nav-link {
-  color: var(--text-light);
+  color: #ffffff;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 0;
   position: relative;
-  padding: 0.5rem 0;
-  transition: all var(--transition-speed) ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-link::after {
@@ -96,9 +91,14 @@ export default {
   bottom: 0;
   left: 0;
   width: 0;
-  height: 2px;
-  background-color: var(--text-light);
-  transition: width var(--transition-speed) ease;
+  height: 3px;
+  background: linear-gradient(to right, #facc15, #f97316);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #facc15;
+  transform: translateY(-2px);
 }
 
 .nav-link:hover::after {
@@ -106,16 +106,17 @@ export default {
 }
 
 .nav-link-primary {
-  background-color: var(--text-light);
-  color: var(--primary-color);
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  transition: all var(--transition-speed) ease;
+  background: linear-gradient(135deg, #facc15, #f97316);
+  color: #1e293b;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-link-primary:hover {
-  background-color: rgba(255, 255, 255, 0.9);
-  transform: translateY(-1px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
 }
 
 .nav-link-primary::after {
@@ -125,13 +126,14 @@ export default {
 .nav-button {
   background: none;
   border: none;
-  color: var(--text-light);
-  font-weight: 500;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  padding: 0.5rem 0;
+  padding: 0.75rem 0;
   font-family: inherit;
-  font-size: inherit;
   position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-button::after {
@@ -140,9 +142,14 @@ export default {
   bottom: 0;
   left: 0;
   width: 0;
-  height: 2px;
-  background-color: var(--text-light);
-  transition: width var(--transition-speed) ease;
+  height: 3px;
+  background: linear-gradient(to right, #facc15, #f97316);
+  transition: width 0.3s ease;
+}
+
+.nav-button:hover {
+  color: #facc15;
+  transform: translateY(-2px);
 }
 
 .nav-button:hover::after {
@@ -152,18 +159,24 @@ export default {
 @media (max-width: 768px) {
   .navbar-container {
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+    gap: 1.5rem;
+    padding: 1.5rem;
   }
   
   .navbar-links {
     width: 100%;
-    justify-content: space-around;
-    gap: 0.5rem;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
   
   .nav-link, .nav-button {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    padding: 0.5rem;
+  }
+  
+  .nav-link-primary {
+    padding: 0.6rem 1.2rem;
   }
 }
 </style>
